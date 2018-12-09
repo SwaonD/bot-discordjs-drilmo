@@ -4,11 +4,7 @@
   "version": "0.0.0",
   "main": "discordjs-prog.js",
   "scripts": {
-    "start": [
-      "node discordjs-prog.js",
-      "node erisjs-prog.js",
-      "node text.json"
-      ]         
+    "start": "node discordjs-prog.js"       
   },
   "dependencies": {
     "discord.js": "11.1.0",
