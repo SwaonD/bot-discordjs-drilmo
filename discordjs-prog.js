@@ -27,6 +27,7 @@ client.on('message', async (message) => {
 
         if (message.content.startsWith(`${prefix}${text.commands.createdChannel.rename} `)) { // !rename
             if (message.member.voiceChannel !== undefined) {    // tout sur les voiceChannels
+                message.channel.send(message.member.voiceChannel.parent.id)
                 if (message.member.voiceChannel.parent !== null) {
                     if (message.member.voiceChannel.parent.id === text.category.creationCategory.id) {
                         const args = message.content.slice(prefix.length).trim().split(/ +/g)
