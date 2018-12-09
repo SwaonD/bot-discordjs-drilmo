@@ -67,4 +67,4 @@ client.on('message', async (message) => {
         message.channel.send("Cette action n'est possible que dans le channel 'commandes' !")
     }
 });
-client.login(text.token);
+client.login(process.env.BOT_TOKEN);
