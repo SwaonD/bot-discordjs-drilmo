@@ -1,5 +1,5 @@
 const Eris = require('eris')
-const text = require('./src/text.json')
+const text = require('./text.json')
 var bot = new Eris(process.env.BOT_TOKEN);
 
 bot.on('voiceStateUpdate', async (member,oldState) => { // create the channel
