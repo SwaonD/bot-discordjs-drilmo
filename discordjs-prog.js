@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const text = require('./text.json')
 const prefix = "!"
-require('./cre-del-join-erisversionFINALE.js')
+require('./erisjs-prog.js')
 
 client.on('voiceStateUpdate', async (oldMember,newMember) => {   
     const leChannelSortie = oldMember.voiceChannel
