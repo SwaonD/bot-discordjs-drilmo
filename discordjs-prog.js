@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const text = require('./text.json')
+
 const prefix = "!"
 require('./erisjs-prog.js')
 
