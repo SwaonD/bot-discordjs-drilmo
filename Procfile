@@ -1,1 +1,1 @@
-worker:node discordjs-prog.js
+worker: node discordjs-prog.js
