@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const text = require('./text.json')
+const text = require('bot-discordjs-drilmo/text.json')
 const prefix = "!"
-require('./erisjs-prog.js')
+require('bot-discordjs-drilmo/erisjs-prog.js')
 
 client.on('voiceStateUpdate', async (oldMember,newMember) => {   
     const leChannelSortie = oldMember.voiceChannel
