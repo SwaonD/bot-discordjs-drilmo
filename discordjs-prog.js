@@ -26,7 +26,6 @@ client.on('message', async (message) => {
     if (message.channel.id === text.channels.commandChannel.id) {
 
         if (message.content.startsWith(`${prefix}${text.commands.createdChannel.rename} `)) { // !rename
-            message.channel.send(message.member.voiceChannel.parent.id)
             if (message.member.voiceChannel !== undefined) {    // tout sur les voiceChannels
                 if (message.member.voiceChannel.parent !== null) {
                     if (message.member.voiceChannel.parent.id === text.category.creationCategory.id) {
