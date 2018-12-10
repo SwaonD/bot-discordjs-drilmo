@@ -25,6 +25,19 @@ client.on('voiceStateUpdate', async (oldMember,newMember) => {
 client.on('message', async (message) => {
     if (message.author.bot) return
     
+    // function carré(nombre) {
+        // const args = message.content.slice(prefix.length).trim().split(/ +/g)
+        // if (args.length > 0 ) {
+            // listNomDuChannel = Array.from(message.member.voiceChannel.name)
+            // channelNumber = listNomDuChannel[listNomDuChannel.length-1]
+            // let world = ""
+            // for (let i = 0; i < args.length; i++) world += `${args[i]} `
+                // message.member.voiceChannel.setName('🔹 ' + world.slice(`${args[0].length}`) + '#' + channelNumber)      
+            // }
+        // return nombre * nombre;
+    // }
+    
+    
     if (message.content.startsWith(`${prefix}${text.commands.createdChannel.rename} `)) { // !rename
         if (message.channel.id === text.channels.commandChannel.id) {
             if (message.member.voiceChannel !== undefined) {  
