@@ -46,6 +46,7 @@ client.on('message', async (message) => {
         }
     }
     for (i=0; i<text.commands.createdChannel.length; i++) {
+        message.channel.send(text.commands.createdChannel[i])
         if (message.content.startsWith(`${prefix}${text.commands.createdChannel[i]} `)) { // commands
             message.channel.send('reussi')
             if (message.channel.id === text.channels.commandChannel.id) {
