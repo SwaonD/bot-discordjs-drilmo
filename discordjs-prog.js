@@ -46,7 +46,7 @@ client.on('message', async (message) => {
         }
     }
     for (i=0; i<text.commands.createdChannel.length; i++) {
-        if (message.content.startsWith(`${prefix}${text.commands.createdChannel[i]} `)) { // commands
+        if (message.content.startsWith(`${prefix}${text.commands.createdChannel[i]}`)) { // commands
             if (message.channel.id === text.channels.commandChannel.id) {
                 if (message.member.voiceChannel !== undefined) {  
                     if (message.member.voiceChannel.parent !== null) {
