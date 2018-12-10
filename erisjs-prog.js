@@ -10,7 +10,7 @@ bot.on('voiceStateUpdate', async (member,oldState) => { // create the channel
                 try { 
                     creerLeChannelNumber = text.channels.createdChannel.number.shift()
                     if (creerLeChannelNumber !== undefined) {
-                        creerLeChannel = await member.guild.createChannel(text.channels.createdChannel.name + creerLeChannelNumber, 'voice', null, '519806866147115011')   
+                        creerLeChannel = await member.guild.createChannel(text.channels.createdChannel.name + creerLeChannelNumber, 'voice', null, text.category.creationCategory.id)   
                         member.edit({channelID: creerLeChannel.id})
                     }
                 } catch (e) {
