@@ -45,7 +45,7 @@ client.on('message', async (message) => {
             message.member.voiceChannel.setUserLimit(0)
         }
     }
-    
+    for (i=0, text.commands.createdChannel, i++) {
     if (message.content.startsWith(`${prefix}${text.commands.createdChannel} `)) { // commands
         message.channel.send('reussi')
         if (message.channel.id === text.channels.commandChannel.id) {
