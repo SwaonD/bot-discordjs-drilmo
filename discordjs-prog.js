@@ -53,13 +53,13 @@ client.on('message', async (message) => {
                     if (message.member.voiceChannel.parent !== null) {
                         if (message.member.voiceChannel.parent.id === text.category.creationCategory.id) {
                         
-                            if (message.content.startsWith(`${prefix}${text.commands.createdChannel.rename} `)) { // !rename
+                            if (message.content.startsWith(`${prefix}${text.commands.createdChannel[text.commands.createdChannel.indexOf('rename')]} `)) { // !rename
                                 renameChannel()
                             }   
-                            if (message.content.startsWith(`${prefix}${text.commands.createdChannel.close}`)) { // !close
+                            if (message.content.startsWith(`${prefix}${text.commands.createdChannel[text.commands.createdChannel.indexOf('close')]}`)) { // !close
                                 closeChannel()
                             }
-                            if (message.content.startsWith(`${prefix}${text.commands.createdChannel.open}`)) { // !open
+                            if (message.content.startsWith(`${prefix}${text.commands.createdChannel[text.commands.createdChannel.indexOf('open')]}`)) { // !open
                                 openChannel()
                             }      
                         }
