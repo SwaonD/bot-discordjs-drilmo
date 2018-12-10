@@ -25,82 +25,42 @@ client.on('voiceStateUpdate', async (oldMember,newMember) => {
 client.on('message', async (message) => {
     if (message.author.bot) return
     
-    // function carré(nombre) {
-        // const args = message.content.slice(prefix.length).trim().split(/ +/g)
-        // if (args.length > 0 ) {
-            // listNomDuChannel = Array.from(message.member.voiceChannel.name)
-            // channelNumber = listNomDuChannel[listNomDuChannel.length-1]
-            // let world = ""
-            // for (let i = 0; i < args.length; i++) world += `${args[i]} `
-                // message.member.voiceChannel.setName('🔹 ' + world.slice(`${args[0].length}`) + '#' + channelNumber)      
-            // }
-        // return nombre * nombre;
-    // }
+    function renameChannel() {
+        const args = message.content.slice(prefix.length).trim().split(/ +/g)
+        if (args.length > 0 ) {
+            listNomDuChannel = Array.from(message.member.voiceChannel.name)
+            channelNumber = listNomDuChannel[listNomDuChannel.length-1]
+            let world = ""
+            for (let i = 0; i < args.length; i++) world += `${args[i]} `
+                message.member.voiceChannel.setName('🔹 ' + world.slice(`${args[0].length}`) + '#' + channelNumber)      
+            }
+    }
+    function closeChannel() {
+        if (message.member.voiceChannel) {
+            message.member.voiceChannel.setUserLimit(message.member.voiceChannel.members.size)
+        }
+    }
+    function openChannel() {
+        if (message.member.voiceChannel) {
+            message.member.voiceChannel.setUserLimit(0)
+        }
+    }
     
-    
-    if (message.content.startsWith(`${prefix}${text.commands.createdChannel.rename} `)) { // !rename
+    if (message.content.startsWith(`${prefix}${text.commands.createdChannel} `)) { // !rename
         if (message.channel.id === text.channels.commandChannel.id) {
             if (message.member.voiceChannel !== undefined) {  
                 if (message.member.voiceChannel.parent !== null) {
                     if (message.member.voiceChannel.parent.id === text.category.creationCategory.id) {
-                        const args = message.content.slice(prefix.length).trim().split(/ +/g)
-                        if (args.length > 0 ) {
-                            listNomDuChannel = Array.from(message.member.voiceChannel.name)
-                            channelNumber = listNomDuChannel[listNomDuChannel.length-1]
-                            let world = ""
-                            for (let i = 0; i < args.length; i++) world += `${args[i]} `
-                            message.member.voiceChannel.setName('🔹 ' + world.slice(`${args[0].length}`) + '#' + channelNumber)      
+                        
+                        if (message.content.startsWith(`${prefix}${text.commands.createdChannel.rename} `)) { // !rename
+                            renameChannel()
+                        }   
+                        if (message.content.startsWith(`${prefix}${text.commands.createdChannel.close}`)) { // !close
+                            closeChannel()
                         }
-                    }
-                    else {
-                        message.channel.send("Cette action n'est pas autorisée avec ce channel !")
-                    }
-                }
-                else {
-                    message.channel.send("Cette action n'est pas autorisée avec ce channel !")
-                }
-            }
-            else {
-                message.channel.send('Vous devez être connecté à un un channel vocal !')
-            }
-        }
-        else {
-            message.channel.send("Cette action n'est possible que dans le channel 'commandes' !")
-        }
-    }
-    if (message.content.startsWith(`${prefix}${text.commands.createdChannel.close}`)) { // !close
-        if (message.channel.id === text.channels.commandChannel.id) {
-            if (message.member.voiceChannel !== undefined) {    // tout sur les voiceChannels
-                if (message.member.voiceChannel.parent !== null) {
-                    if (message.member.voiceChannel.parent.id === text.category.creationCategory.id) {
-                        if (message.member.voiceChannel) {
-                                message.member.voiceChannel.setUserLimit(message.member.voiceChannel.members.size)
-                        }
-                    }
-                    else {
-                        message.channel.send("Cette action n'est pas autorisée avec ce channel !")
-                    }
-                }
-                else {
-                    message.channel.send("Cette action n'est pas autorisée avec ce channel !")
-                }
-            }
-            else {
-                message.channel.send('Vous devez être connecté à un un channel vocal !')
-            }
-        }
-        else {
-            message.channel.send("Cette action n'est possible que dans le channel 'commandes' !")
-        }
-    }
-    if (message.content.startsWith(`${prefix}${text.commands.createdChannel.open}`)) { // !open
-        if (message.channel.id === text.channels.commandChannel.id) {
-            if (message.member.voiceChannel !== undefined) {    // tout sur les voiceChannels
-                if (message.member.voiceChannel.parent !== null) {
-                    if (message.member.voiceChannel.parent.id === text.category.creationCategory.id) {
-                        if (message.member.voiceChannel) {
-                            message.member.voiceChannel.setUserLimit(0)
-                        }
+                        if (message.content.startsWith(`${prefix}${text.commands.createdChannel.open}`)) { // !open
+                            openChannel()
+                        }      
                     }
                     else {
                         message.channel.send("Cette action n'est pas autorisée avec ce channel !")
