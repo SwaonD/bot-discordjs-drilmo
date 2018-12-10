@@ -31,9 +31,9 @@
     },
     "commands": {
         "createdChannel": [
-            "rename": "rename",
-            "open": "open",
-            "close": "close"
+            "rename",
+            "open",
+            "close"
         ]
     }
 }
