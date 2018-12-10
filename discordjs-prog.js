@@ -45,38 +45,39 @@ client.on('message', async (message) => {
             message.member.voiceChannel.setUserLimit(0)
         }
     }
-    for (i=0, text.commands.createdChannel, i++) {
-    if (message.content.startsWith(`${prefix}${text.commands.createdChannel} `)) { // commands
-        message.channel.send('reussi')
-        if (message.channel.id === text.channels.commandChannel.id) {
-            if (message.member.voiceChannel !== undefined) {  
-                if (message.member.voiceChannel.parent !== null) {
-                    if (message.member.voiceChannel.parent.id === text.category.creationCategory.id) {
+    for (i=0; i<text.commands.createdChannel.length; i++) {
+        if (message.content.startsWith(`${prefix}${text.commands.createdChannel[i]} `)) { // commands
+            message.channel.send('reussi')
+            if (message.channel.id === text.channels.commandChannel.id) {
+                if (message.member.voiceChannel !== undefined) {  
+                    if (message.member.voiceChannel.parent !== null) {
+                        if (message.member.voiceChannel.parent.id === text.category.creationCategory.id) {
                         
-                        if (message.content.startsWith(`${prefix}${text.commands.createdChannel.rename} `)) { // !rename
-                            renameChannel()
-                        }   
-                        if (message.content.startsWith(`${prefix}${text.commands.createdChannel.close}`)) { // !close
-                            closeChannel()
+                            if (message.content.startsWith(`${prefix}${text.commands.createdChannel.rename} `)) { // !rename
+                                renameChannel()
+                            }   
+                            if (message.content.startsWith(`${prefix}${text.commands.createdChannel.close}`)) { // !close
+                                closeChannel()
+                            }
+                            if (message.content.startsWith(`${prefix}${text.commands.createdChannel.open}`)) { // !open
+                                openChannel()
+                            }      
                         }
-                        if (message.content.startsWith(`${prefix}${text.commands.createdChannel.open}`)) { // !open
-                            openChannel()
-                        }      
+                        else {
+                            message.channel.send("Cette action n'est pas autorisée avec ce channel !")
+                        }
                     }
                     else {
                         message.channel.send("Cette action n'est pas autorisée avec ce channel !")
                     }
                 }
                 else {
-                    message.channel.send("Cette action n'est pas autorisée avec ce channel !")
+                    message.channel.send('Vous devez être connecté à un un channel vocal !')
                 }
             }
             else {
-                message.channel.send('Vous devez être connecté à un un channel vocal !')
+                message.channel.send("Cette action n'est possible que dans le channel 'commandes' !")
             }
-        }
-        else {
-            message.channel.send("Cette action n'est possible que dans le channel 'commandes' !")
         }
     }
 });
