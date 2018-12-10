@@ -15,18 +15,18 @@
             ]  
         },
         "creationChannel": {
-            "name": "creation",
-            "id": "517325385625632789"
+            "name": "lancer un jeu",
+            "id": "521481920199131162"
         },
         "commandChannel": {
             "name": "commandes",
-            "id": "483432833478688789"
+            "id": "350226675482755072"
         }
     },
     "category": {
         "creationCategory": {
-            "name": "creation",
-            "id": "519806866147115011"
+            "name": "jeux",
+            "id": "484129671147945984"
         }
     },
     "commands": {
