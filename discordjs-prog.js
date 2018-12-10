@@ -46,7 +46,8 @@ client.on('message', async (message) => {
         }
     }
     
-    if (message.content.startsWith(`${prefix}${text.commands.createdChannel} `)) { // !rename
+    if (message.content.startsWith(`${prefix}${text.commands.createdChannel} `)) { // commands
+        message.channel.send('reussi')
         if (message.channel.id === text.channels.commandChannel.id) {
             if (message.member.voiceChannel !== undefined) {  
                 if (message.member.voiceChannel.parent !== null) {
