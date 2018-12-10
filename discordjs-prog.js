@@ -24,10 +24,10 @@ client.on('voiceStateUpdate', async (oldMember,newMember) => {
 })
 client.on('message', async (message) => {
     if (message.author.bot) return
-    if (message.channel.id === text.channels.commandChannel.id) {
-
-        if (message.content.startsWith(`${prefix}${text.commands.createdChannel.rename} `)) { // !rename
-            if (message.member.voiceChannel !== undefined) {    // tout sur les voiceChannels
+    
+    if (message.content.startsWith(`${prefix}${text.commands.createdChannel.rename} `)) { // !rename
+        if (message.channel.id === text.channels.commandChannel.id) {
+            if (message.member.voiceChannel !== undefined) {  
                 if (message.member.voiceChannel.parent !== null) {
                     if (message.member.voiceChannel.parent.id === text.category.creationCategory.id) {
                         const args = message.content.slice(prefix.length).trim().split(/ +/g)
@@ -51,12 +51,17 @@ client.on('message', async (message) => {
                 message.channel.send('Vous devez être connecté à un un channel vocal !')
             }
         }
-        if (message.content.startsWith(`${prefix}${text.commands.createdChannel.close}`)) { // !close
+        else {
+            message.channel.send("Cette action n'est possible que dans le channel 'commandes' !")
+        }
+    }
+    if (message.content.startsWith(`${prefix}${text.commands.createdChannel.close}`)) { // !close
+        if (message.channel.id === text.channels.commandChannel.id) {
             if (message.member.voiceChannel !== undefined) {    // tout sur les voiceChannels
                 if (message.member.voiceChannel.parent !== null) {
                     if (message.member.voiceChannel.parent.id === text.category.creationCategory.id) {
                         if (message.member.voiceChannel) {
-                            message.member.voiceChannel.setUserLimit(message.member.voiceChannel.members.size)
+                                message.member.voiceChannel.setUserLimit(message.member.voiceChannel.members.size)
                         }
                     }
                     else {
@@ -71,7 +76,12 @@ client.on('message', async (message) => {
                 message.channel.send('Vous devez être connecté à un un channel vocal !')
             }
         }
-        if (message.content.startsWith(`${prefix}${text.commands.createdChannel.open}`)) { // !open
+        else {
+            message.channel.send("Cette action n'est possible que dans le channel 'commandes' !")
+        }
+    }
+    if (message.content.startsWith(`${prefix}${text.commands.createdChannel.open}`)) { // !open
+        if (message.channel.id === text.channels.commandChannel.id) {
             if (message.member.voiceChannel !== undefined) {    // tout sur les voiceChannels
                 if (message.member.voiceChannel.parent !== null) {
                     if (message.member.voiceChannel.parent.id === text.category.creationCategory.id) {
@@ -91,9 +101,9 @@ client.on('message', async (message) => {
                 message.channel.send('Vous devez être connecté à un un channel vocal !')
             }
         }
-    }
-    else {
-        message.channel.send("Cette action n'est possible que dans le channel 'commandes' !")
+        else {
+            message.channel.send("Cette action n'est possible que dans le channel 'commandes' !")
+        }
     }
 });
 client.login(process.env.BOT_TOKEN);
